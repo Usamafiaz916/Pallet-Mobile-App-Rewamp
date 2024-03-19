@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, prefer_const_constructors, unnecessary_const, avoid_unnecessary_containers, sort_child_properties_last
+// ignore_for_file: file_names, prefer_const_constructors, unnecessary_const, avoid_unnecessary_containers, sort_child_properties_last, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
@@ -23,7 +23,7 @@ class _ChangeJobsitesState extends State<ChangeJobsites> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Colors.green.shade900,
+              Color(0xFF216241),
               Color(0xFF216241),
             ],
           ),
@@ -40,7 +40,14 @@ class _ChangeJobsitesState extends State<ChangeJobsites> {
       ),
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFF216241),
+          foregroundColor: Colors.white70,
           title: const Text('Change Jobsites'),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(30),
+            ),
+          ),
           leading: IconButton(
             onPressed: _handleMenuButtonPressed,
             icon: ValueListenableBuilder<AdvancedDrawerValue>(
@@ -80,28 +87,34 @@ class _ChangeJobsitesState extends State<ChangeJobsites> {
                     shape: BoxShape.circle,
                   ),
                   child: Image.asset(
-                    'assets/images/flutter_logo.png',
+                    'assets/Logo.png',
+                    fit: BoxFit.fill,
                   ),
                 ),
                 ListTile(
                   onTap: () {},
-                  leading: Icon(Icons.home),
-                  title: Text('Home'),
+                  leading: Icon(Icons.data_exploration),
+                  title: Text('Data Entry'),
                 ),
                 ListTile(
                   onTap: () {},
-                  leading: Icon(Icons.account_circle_rounded),
-                  title: Text('Profile'),
+                  leading: Icon(Icons.history),
+                  title: Text('Data History'),
                 ),
                 ListTile(
                   onTap: () {},
-                  leading: Icon(Icons.favorite),
-                  title: Text('Favourites'),
+                  leading: Icon(Icons.redo),
+                  title: Text('Reasign Jobsites'),
                 ),
                 ListTile(
                   onTap: () {},
-                  leading: Icon(Icons.settings),
-                  title: Text('Settings'),
+                  leading: Icon(Icons.display_settings),
+                  title: Text('Display Jobsites'),
+                ),
+                ListTile(
+                  onTap: () {},
+                  leading: Icon(Icons.help),
+                  title: Text('Help'),
                 ),
                 Spacer(),
                 DefaultTextStyle(
