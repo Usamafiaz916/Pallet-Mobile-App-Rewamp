@@ -1,13 +1,14 @@
-// ignore_for_file: file_names, prefer_const_constructors, unnecessary_const, avoid_unnecessary_containers, sort_child_properties_last, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_unnecessary_containers, sort_child_properties_last, avoid_print
+
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
-
-
-
+import 'package:http/http.dart' as http; // Import http package
+import 'package:prominent_pallet/services/Api.dart';
 
 class ChangeJobsites extends StatefulWidget {
-  const ChangeJobsites({super.key});
+  const ChangeJobsites({Key? key}) : super(key: key);
 
   @override
   State<ChangeJobsites> createState() => _ChangeJobsitesState();
@@ -15,6 +16,21 @@ class ChangeJobsites extends StatefulWidget {
 
 class _ChangeJobsitesState extends State<ChangeJobsites> {
   final _advancedDrawerController = AdvancedDrawerController();
+
+  Future<void> fetchJobsite() async {
+    try {
+      final response = await http.get(Uri.parse(APILinks.jobsite));
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        print(data);
+      } else {
+        throw Exception('Failed to load jobsite');
+      }
+    } catch (e) {
+      print('Error: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return AdvancedDrawer(
@@ -67,7 +83,10 @@ class _ChangeJobsitesState extends State<ChangeJobsites> {
             ),
           ),
         ),
-        body: Container(),
+        body: ElevatedButton(
+          onPressed: fetchJobsite,
+          child: Text('Fetch Jobsite'), // Change button text as needed
+        ),
       ),
       drawer: SafeArea(
         child: Container(
@@ -91,7 +110,6 @@ class _ChangeJobsitesState extends State<ChangeJobsites> {
                   ),
                   child: Image.asset(
                     'images/drawerLogo.png',
-                    
                     fit: BoxFit.fill,
                   ),
                 ),
