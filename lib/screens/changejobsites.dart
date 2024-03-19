@@ -87,7 +87,8 @@ class _ChangeJobsitesState extends State<ChangeJobsites> {
                     shape: BoxShape.circle,
                   ),
                   child: Image.asset(
-                    'assets/Logo.png',
+                    'images/drawerLogo.png',
+                    
                     fit: BoxFit.fill,
                   ),
                 ),
