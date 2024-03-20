@@ -1,10 +1,12 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_unnecessary_containers, sort_child_properties_last, avoid_print
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_unnecessary_containers, sort_child_properties_last, avoid_print, unnecessary_const
 
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:http/http.dart' as http; // Import http package
+import 'package:prominent_pallet/screens/Data_Entry.dart';
+import 'package:prominent_pallet/screens/help_screen.dart';
 import 'package:prominent_pallet/services/Api.dart';
 
 class ChangeJobsites extends StatefulWidget {
@@ -83,9 +85,13 @@ class _ChangeJobsitesState extends State<ChangeJobsites> {
             ),
           ),
         ),
-        body: ElevatedButton(
-          onPressed: fetchJobsite,
-          child: Text('Fetch Jobsite'), // Change button text as needed
+        body: Column(
+          children: [
+            ElevatedButton(
+              onPressed: fetchJobsite,
+              child: Text('Fetch Jobsite'),
+            ),
+          ],
         ),
       ),
       drawer: SafeArea(
@@ -114,7 +120,10 @@ class _ChangeJobsitesState extends State<ChangeJobsites> {
                   ),
                 ),
                 ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => DataEntry()));
+                  },
                   leading: Icon(Icons.data_exploration),
                   title: Text('Data Entry'),
                 ),
@@ -134,7 +143,10 @@ class _ChangeJobsitesState extends State<ChangeJobsites> {
                   title: Text('Display Jobsites'),
                 ),
                 ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HelpScreen()));
+                  },
                   leading: Icon(Icons.help),
                   title: Text('Help'),
                 ),

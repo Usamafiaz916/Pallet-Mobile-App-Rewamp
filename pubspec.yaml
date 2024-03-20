@@ -40,6 +40,7 @@ dependencies:
   sidebarx: ^0.16.3
   http: ^1.2.1
   dio: ^5.4.1
+  syncfusion_flutter_datagrid: ^25.1.35
 
 dev_dependencies:
   flutter_test:
